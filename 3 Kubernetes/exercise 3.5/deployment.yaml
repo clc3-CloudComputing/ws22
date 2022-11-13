@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo
-  namespace: demo-environment
 spec:
   replicas: 1
   selector:
@@ -15,6 +14,12 @@ spec:
     spec:
       containers:
       - name: demo
-        image: agrimmer/demo:time
+        image: agrimmer/demo:formatted
         ports:
         - containerPort: 8888
+        env:
+          - name: "FORMAT"
+            valueFrom:
+              configMapKeyRef:
+                name: outputformat
+                key: format
