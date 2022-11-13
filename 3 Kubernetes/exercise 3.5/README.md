@@ -1,57 +1,70 @@
-# Exercise 3.5: Using Namespaces
+# Exercise 3.5: Creating a ConfigMap
 
-In this exercise, you will create a namespace for your Kubernetes resources (i.e., deployments, services, pods). Afterwards, you will modify the deployment manifest from exercise 3.2, to create a deployment in this particular namespace.
+In this exercise, you will create a ConfigMap which allows to control the output format of our application.
+More precisely, the ConfigMap will be used to control if the output is in plain text or HTML-formatted.
+Therefore, you will mount the ConfigMap as environment variable in the Pod and by editing the ConfigMap, you will be able to control the output format without changing the image.
 
 ## Instructions
 
-1. Create a file `namespace.yaml` with the following content:
+1. Create a file `configmap.yaml` with the following content:
 
     ```yaml
     apiVersion: v1
-    kind: Namespace
+    kind: ConfigMap
     metadata:
-      name: demo-environment
+      name: outputformat
+    data:
+      format: "html"
     ```
 
-1. Apply the *namespace* to your Kubernetes cluster using: 
-    
-    ```source
-    kubectl apply -f namespace.yaml
+1. Apply the ConfigMap to your Kubernetes cluster using: 
+
+    ```console
+    kubectl apply -f conifgmap.yaml
     ```
 
-    * This will create the namespace `demo-environment` where you can add Kubernetes resources (i.e., deployments, services, pods) to.
+1. Configure the container inside the Pod by adding an environment varialbe which refers the ConfigMap:
 
-1. Query all your namespaces with the following command and find your newly created namespace:
-    ```source
-    kubectl get namespaces
-    ```
-    ```source
-    default            Active   20m
-    demo-environment   Active   81s
-    kube-public        Active   20m
-    kube-system        Active   20m
-    ```
-
-1. Modify the deployment from exercise 2.3. so that the demo app will be deployed in the `demo-environment` namespace. Therefore, extend the `metadata` as follows:
-    
     ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
       name: demo
-      namespace: demo-environment
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: demo
+      template:
+        metadata:
+          labels:
+            app: demo
+        spec:
+          containers:
+          - name: demo
+            image: agrimmer/demo:time
+            ports:
+            - containerPort: 8888
+            env:
+              - name: "FORMAT"
+                valueFrom:
+                  configMapKeyRef:
+                    name: outputformat
+                    key: format
     ```
 
-1. Apply the modified deployment by executing: 
+1. Apply the changes to your Kubernetes cluster using: 
 
     ```console
     kubectl apply -f deployment.yaml
     ```
 
-1. Check the resources in the `demo-environment` namespace with:
-    
-    ```console
-    kubectl get deployments --namespace demo-environment
-    ```
+1. To forward your local port **9999** to the container port **8888**, use:
 
     ```console
-    kubectl get pods --namespace demo-environment
+    kubectl port-forward deployment/demo 9999:8888
     ```
+
+    :mag: Now, access the website [http://localhost:9999](http://localhost:9999). Do you see a HTML-formatted output? 
+
+1. Change the output format back to *plain*. What is needed that the changes are applied?
