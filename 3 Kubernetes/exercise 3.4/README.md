@@ -4,8 +4,6 @@ In this exercise, you will specify a service for your deployment.
 Therefore, you will use the service types *ClusterIP*, *NodePort*, and *LoadBalancer*.
 The service resource will be crated by defining a service manifest (`service.yaml`) and afterwards 
 applying it to your Kubernetes cluster.
-When the service is available, you can retrieve the different 
-service type informations to access your demo app via a web browser.
 
 
 ## Instructions
