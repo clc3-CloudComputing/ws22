@@ -32,7 +32,7 @@ In this exercise, you will create a namespace for your Kubernetes resources (i.e
     kube-system        Active   20m
     ```
 
-1. Modify the deployment from exercise 2.3. so that the demo app will be deployed in the `demo-environment` namespace. Therefore, extend the `metadata` as follows:
+1. Modify the deployment from exercise 3.3. so that the demo app will be deployed in the `demo-environment` namespace. Therefore, extend the `metadata` as follows:
     
     ```yaml
     metadata:
