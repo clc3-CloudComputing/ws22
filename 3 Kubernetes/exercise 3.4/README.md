@@ -28,7 +28,7 @@ applying it to your Kubernetes cluster.
       type: ClusterIP
     ```
 
-    * The `ports`-section specifies that the Service forwards all traffic on port 80 to the Pod's port on 8888.
+    * The `ports`-section specifies that the Service forwards all traffic received on port 80 to the Pod's port on 8888.
 
     * The `selector` tells the Service to which Pods the requests should be routed. Here, the requests are forwarded to any Pods matching the label `app: demo`.
 
