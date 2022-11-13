@@ -43,7 +43,7 @@ By editing the ConfigMap, you will be able to control the output format without 
         spec:
           containers:
           - name: demo
-            image: agrimmer/demo:time
+            image: agrimmer/demo:formatted
             ports:
             - containerPort: 8888
             env:
