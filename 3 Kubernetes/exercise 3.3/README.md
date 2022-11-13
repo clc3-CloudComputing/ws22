@@ -4,7 +4,7 @@ In this exercise, you will specify a deployment (supervisor) for your pod by def
 
 ## Instructions
 
-1. Create a file `deployment.yaml` with the following content and insert your DockerHub account:
+1. Create a file `deployment.yaml` with the following content:
 
     ```yaml
     apiVersion: apps/v1
