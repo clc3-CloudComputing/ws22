@@ -74,7 +74,7 @@ In case you have no access to a public cloud (because e.g. you do not have a cre
 
 1. Open the [Azure Portal](https://portal.azure.com/) and select *Kubernetes services*
 
-1. Click on *Add*
+1. Click on *Create* and select "Create a Kubernetes cluster"
 
 1. Select a *Subscription*, *Resource group* (if necessary, create a new group)
 
