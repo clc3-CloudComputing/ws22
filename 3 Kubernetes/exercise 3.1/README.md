@@ -31,7 +31,7 @@ In case you have no access to a public cloud (because e.g. you do not have a cre
 
 1. Open the [Kubernetes Engine Overview](https://console.cloud.google.com/kubernetes)
 
-1. Click on *Create Cluster*
+1. Click on *Create Cluster* and select "Standard: you manage your cluster"
 
 1. Create a cluster with the *default* settings except for the *Number of nodes* where you only need 1:
 
