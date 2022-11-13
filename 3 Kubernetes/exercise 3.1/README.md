@@ -116,7 +116,7 @@ In case you have no access to a public cloud (because e.g. you do not have a cre
 
 ## minikube
 
-"`minikube` minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes."
+`minikube` minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes."
 
 ### Starting a local Cluster 
 1. In your terminal, execute the following command:
