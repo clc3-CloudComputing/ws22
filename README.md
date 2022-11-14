@@ -1,6 +1,6 @@
-# Cloud Computing Architectures, Processes and Operations​
+# Cloud Computing
 
-In this repository, the content for the course Cloud Computing from a Software Engineering Perspective (winter term 2022) is maintained.
+In this repository, the content for the course Cloud Computing is maintained.
 
 In this course, we will cover the journey from code to a scalable application running in the cloud. Therefore, we will learn how to build applications using continuous integration pipelines. After building, a state-of-the-art cloud technology to operate applications, namely Kubernetes, is explained. Then, ways to deploy applications into a Kubernetes environment are explored. Finally, we will learn how to operate an application in a production environment.
 
