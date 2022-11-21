@@ -27,7 +27,7 @@ In this exercise, you will write a Dockerfile and you will build an im
 ## Instructions
 
 1. Create a Dockerfile with the following instructions:
-    * Base image: `golang:1.19.3`
+    * Base image: `golang:1.13-alpine`
     * Set author label: `author='<YOUR-EMAIL'>`
     * Set working directory: `/opt`
     * Copy local file `main.go` to the image folder `/opt/`
