@@ -23,7 +23,7 @@ In this exercise, you will set up a *Continuous Integration* (CI) workflow using
 
 1. Add and commit `main.go`, `main_test.go`, `fib.go`, `fib_test.go`, and `go.mod` to your repository via drag-and-drop.
 
-1. Active GitHub Actions for your GitHub repository:
+1. In GitHub, go to **Actions** and set up a GitHub workflow by clicking `set up a workflow yourself`:
 
 ![GitHub Action activation](./assets/gh_action_activate.png)
 
@@ -36,9 +36,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

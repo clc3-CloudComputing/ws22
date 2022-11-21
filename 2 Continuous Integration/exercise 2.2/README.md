@@ -19,7 +19,7 @@ In this exercise, you will integrate DockerHub into the CI workflow to push an i
 
 1. Setup credentials for DockerHub in GitHub:
 
-    1. In your repository, go to: `Settings` > `Secrets` > **New repository secret**
+    1. In your repository, go to: `Settings` > `Secrets` > `Actions` > **New repository secret**
 
     1. Add the secret `DOCKERHUB_USERNAME` with your DockerHub registry user name
 

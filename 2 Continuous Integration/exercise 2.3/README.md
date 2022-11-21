@@ -28,14 +28,14 @@ In this exercise, you will scan your code with [SonarCloud](https://sonarcloud.i
 
 1. Select: `With GitHub Actions` and follow the instructions.
 
-    * Create a GitHub Secret, go to `Settings` > `Secret` and enter the provided value for the key `SONAR_TOKEN`.
+    * Create a GitHub Secret, go to `Settings` > `Secrets` > `Actions` > and enter the provided value for the key `SONAR_TOKEN`.
 
     * Instead of creating the file `.github/workflows/build.yml`, we extend the `CI.yaml` by adding the following step before *Run test and build*: 
 
     ```yaml
     # Run SonarCloud scan
     - name: SonarCloud scan
-      uses: SonarSource/sonarcloud-github-action@v1.6
+      uses: SonarSource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -44,8 +44,8 @@ In this exercise, you will scan your code with [SonarCloud](https://sonarcloud.i
     * Create a `sonar-project.properties` file on `main`/`master` branch:
     
     ```
-    sonar.projectKey=******_mini-ci-example
-    sonar.organization=******
+    sonar.projectKey=[YOUR-GITHUB-ORG]_mini-ci-example
+    sonar.organization=[YOUR-GITHUB-ORG]
 
     # This is the name and version displayed in the SonarCloud UI.
     #sonar.projectName=mini-ci-example
@@ -58,11 +58,13 @@ In this exercise, you will scan your code with [SonarCloud](https://sonarcloud.i
     #sonar.sourceEncoding=UTF-8
     ```
 
+1. Disable `Automatic Analysis` on the project in SonarCloud: `Administration` > `Analysis Method` > `Automatic Analysis` : **disabled**
+
 1. Create a `feature` branch: `git checkout -b feature/add-fibo`
 
 1. On the `feature` branch make a code change and commit this change. 
 
-1. File a Pull Request (PR) that integrates the code change from the `feature` branch into the `main`/`master` branch. 
+1. File a Pull Request (PR) that integrates the code change from the `feature` branch into the `main` branch. 
 
 1. Watch the GitHub Action triggering SonarCloud to scan your code. 
 
@@ -111,6 +113,6 @@ In this exercise, you will scan your code with [SonarCloud](https://sonarcloud.i
 
 - `SONAR_TOKEN` – **Required** this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page in SonarCloud](https://sonarcloud.io/account/security/). You can set the `SONAR_TOKEN` environment variable in the "Secrets" settings page of your repository.
 
-- *`GITHUB_TOKEN` – Provided by Github (see [Authenticating with the GITHUB_TOKEN](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token)).*
+- `GITHUB_TOKEN` – Provided by Github (see [Authenticating with the GITHUB_TOKEN](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token)).*
 
 
