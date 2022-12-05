@@ -21,7 +21,7 @@ By editing the ConfigMap, you will be able to control the output format without 
 1. Apply the ConfigMap to your Kubernetes cluster using: 
 
     ```console
-    kubectl apply -f conifgmap.yaml
+    kubectl apply -f configmap.yaml
     ```
 
 1. Configure the container inside the Pod by adding an environment varialbe which refers the ConfigMap:
